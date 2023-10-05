@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\CastController;
+use App\Http\Controllers\GenreController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +29,15 @@ use App\Http\Controllers\CastController;
 //    return view('welcome1');
 //})->name('welcome1');
 
+Route::controller(AuthController::class)->group(function(){
+    Route::get('/registration', 'register')->name('auth.register');
+    Route::post('/store', 'store')->name('auth.store');
+    Route::get('/login', 'login')->name('auth.login');
+    Route::post('/login', 'authentication')->name('auth.authentication');
+    Route::get('/dashboard', 'dashboard')->name('auth.dashboard');
+    Route::post('/logout', 'logout')->name('auth.logout');
+});
+
 Route::get('/index', [PagesController::class, 'index'])->name('index');
 Route::get('/form', [PagesController::class, 'form'])->name('form');
 Route::get('/welcome1', [PagesController::class, 'welcome1'])->name('welcome1');
@@ -35,4 +46,5 @@ Route::get('/master', function () {
     return view('template.master');
 });
 
-Route::resource('/cast', CastController::class);
+Route::resource('/cast', CastController::class)->middleware('auth');
+Route::resource('/genre', GenreController::class)->middleware('auth');

@@ -52,18 +52,14 @@
                     <div class="alert alert-danger">{{ $message}}</div>
                     @enderror
                 <!-- /.card-body -->
-
                 <div class="card-footer">
-                </div>
-            </div>
-            <!-- /.card -->
-
-              <div class="card-footer">
-                  <button type="update" class="btn btn-warning">Update</button>
+                  <button type="update" class="btn btn-sm btn-primary mt-2">Update</button>
+                  <a href="{{ route('cast.index') }}" class="btn btn-sm btn-primary mt-2">Kembali</a>
                 </div>
               </form>
             </div>
-          
+          </div>
+            <!-- /.card -->
           </div>
           <!--/.col (left) -->
         </div>

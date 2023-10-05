@@ -43,20 +43,19 @@
                   <tr>
                     <th>No</th>
                     <th>Nama</th>
-                    <th>Umur</th>
                     <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
                     <!-- {{-- {{ dd($casts) }} --}} -->
-                    @foreach ($casts as $key => $cast)
+                    @foreach ($genres as $key => $genre)
                     <tr>
                       <td>{{ $key +1 }}</td>
-                      <td>{{ $cast->nama }}</td>
+                      <td>{{ $genre->nama }}</td>
                       <td class="d-flex justify-content-center align-items-center" style="gap: 20px">
-                        <a href="{{ route('cast.show', $cast->id) }}" class="btn btn-sm btn-info">Detail</a>
-                        <a href="{{ route('cast.edit', $cast->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                        <form action="{{ route('cast.destroy', $cast->id) }}" method="POST">
+                        <a href="{{ route('genre.show', $genre->id) }}" class="btn btn-sm btn-info">Detail</a>
+                        <a href="{{ route('genre.edit', $genre->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                        <form action="{{ route('genre.destroy', $genre->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
@@ -66,7 +65,7 @@
                 @endforeach
             </tbody>
         </table>
-        <a href="{{ route('cast.create') }}" class="btn btn-sm btn-primary mt-2">Create</a>
+        <a href="{{ route('genre.create') }}" class="btn btn-sm btn-primary mt-2">Create</a>
               </div>
               <!-- /.card-body -->
             </div>
